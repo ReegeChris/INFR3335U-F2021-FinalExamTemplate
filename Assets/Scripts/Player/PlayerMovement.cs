@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         Movement();
-        
+        CameraControls();
 
     }
 
@@ -69,6 +69,19 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+
+    }
+
+    //Camera controls from camera joystick has been added to this class.
+    public void CameraControls()
+    {
+        //CameraAngle is equal to the horizontal input from the camera joystick
+        //After attaching the camera joystick to the player, the player can control the camera by moving the joystick
+        CameraAngle += camStick.Horizontal * CameraAngleSpeed;
+
+        //Calculations to determine the position of the camera and the angle.
+        cam.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 3.5f, -9.4f);
+        cam.rotation = Quaternion.LookRotation(transform.position + Vector3.up * 2f - cam.position, Vector3.up);
 
     }
 
