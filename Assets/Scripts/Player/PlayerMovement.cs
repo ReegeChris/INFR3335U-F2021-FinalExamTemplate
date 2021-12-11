@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     //Cinemachine variables
     public CinemachineFreeLook ThirdPersonCam;
 
-    public float speed = 3f;
+    public float speed = 5f;
 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public Joystick camStick;
 
 
-   // public PhotonView view;
+    public PhotonView view;
 
 
 
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         Movement();
         CameraControls();
 
@@ -87,6 +87,27 @@ public class PlayerMovement : MonoBehaviour
         //Calculations to determine the position of the camera and the angle.
         cam.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 3.5f, -9.4f);
         cam.rotation = Quaternion.LookRotation(transform.position + Vector3.up * 2f - cam.position, Vector3.up);
+
+    }
+
+    //Function used to set the joysticks for each player that is loaded into the lobby
+    //This avoids any potential UI issues as each Joystick is now native to that player
+    public void SetJoysticks(GameObject camera)
+    {
+        Joystick[] tempJoystickList = camera.GetComponentsInChildren<Joystick>();
+
+        foreach (Joystick temp in tempJoystickList)
+        {
+
+            if (temp.tag == "Joystick Movement")
+                moveStick = temp;
+
+            else if (temp.tag == "Joystick Camera")
+                camStick = temp;
+
+        }
+
+        cam = camera.transform;
 
     }
 
