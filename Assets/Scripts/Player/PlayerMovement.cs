@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     //Camera Movement Variables
     protected float CameraAngle;
     protected float CameraAngleSpeed = 2f;
+
+    //Cinemachine variables
+    public CinemachineFreeLook ThirdPersonCam;
 
     public float speed = 3f;
 
@@ -31,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller.GetComponent<CharacterController>();
+        ThirdPersonCam.GetComponent<CinemachineFreeLook>();
     }
 
     // Update is called once per frame
