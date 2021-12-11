@@ -9,7 +9,6 @@ public class PlayerListing : MonoBehaviourPunCallbacks
 {
     public Text playerName;
 
-
     //Player element created from Photon.Realtime namespace
     private Player player;
 
