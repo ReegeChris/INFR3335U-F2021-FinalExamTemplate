@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller.GetComponent<CharacterController>();
-        ThirdPersonCam.GetComponent<CinemachineFreeLook>();
     }
 
     // Update is called once per frame

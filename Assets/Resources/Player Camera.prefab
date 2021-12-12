@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 9093233503501057902}
   - component: {fileID: -708442169908721743}
   - component: {fileID: 2455629276234011488}
-  - component: {fileID: 788381444775242536}
-  - component: {fileID: 2946684723540400260}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -30,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9093233503501057898}
-  m_LocalRotation: {x: 0.114577554, y: 0.0000017706188, z: -0.000000045991413, w: 0.9934143}
+  m_LocalRotation: {x: 0.114577554, y: 0.0000017722102, z: -0.000000045807848, w: 0.9934143}
   m_LocalPosition: {x: 0, y: 2.18, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -180,46 +178,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!54 &788381444775242536
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9093233503501057898}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!145 &2946684723540400260
-SpringJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9093233503501057898}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 2.18, z: -8}
-  serializedVersion: 2
-  m_Spring: 10
-  m_Damper: 0.2
-  m_MinDistance: 0
-  m_MaxDistance: 0
-  m_Tolerance: 0.025
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &9093233503721591269
 GameObject:
   m_ObjectHideFlags: 0
