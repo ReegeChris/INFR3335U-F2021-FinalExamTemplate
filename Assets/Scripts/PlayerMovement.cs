@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Camera Movement Variables
     protected float CameraAngle;
-    protected float CameraAngleSpeed = 2f;
+    protected float CameraAngleSpeed = 1f;
 
     //Cinemachine variables
     public CinemachineFreeLook ThirdPersonCam;
@@ -29,8 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
     public PhotonView view;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,9 +39,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+        if(view.IsMine)
+        {
+    
         Movement();
         CameraControls();
+
+        } 
 
     }
 
@@ -85,9 +88,14 @@ public class PlayerMovement : MonoBehaviour
         CameraAngle += camStick.Horizontal * CameraAngleSpeed;
 
         //Calculations to determine the position of the camera and the angle.
-        cam.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 3.5f, -9.4f);
-        cam.rotation = Quaternion.LookRotation(transform.position + Vector3.up * 2f - cam.position, Vector3.up);
+        //cam.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 3.5f, -9.4f);
+        //cam.rotation = Quaternion.LookRotation(transform.position + Vector3.up * 2f - cam.position, Vector3.up);
 
+
+        //Calculations to determine the position of the camera and the angle.
+        ThirdPersonCam.m_XAxis.Value += camStick.Horizontal * CameraAngleSpeed;
+
+        
     }
 
     //Function used to set the joysticks for each player that is loaded into the lobby
@@ -95,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
     public void SetJoysticks(GameObject camera)
     {
         Joystick[] tempJoystickList = camera.GetComponentsInChildren<Joystick>();
+
+
 
         foreach (Joystick temp in tempJoystickList)
         {
@@ -109,6 +119,12 @@ public class PlayerMovement : MonoBehaviour
 
         cam = camera.transform;
 
+        
+        ThirdPersonCam = cam.GetComponentInChildren<CinemachineFreeLook>();
+        ThirdPersonCam.Follow = GameObject.FindWithTag("Player").transform;
+        ThirdPersonCam.LookAt = GameObject.Find("Hip").transform;
+            
+       
     }
 
 }
