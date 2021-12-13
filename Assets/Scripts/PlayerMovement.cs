@@ -118,9 +118,13 @@ public class PlayerMovement : MonoBehaviour
 
         cam = camera.transform;
 
-        
+        //Get the cinemachine component which is a child of the main camera 
         ThirdPersonCam = cam.GetComponentInChildren<CinemachineFreeLook>();
+        
+        //Set the child cinemachine object to follow the gameobject with the "Player Tag"
         ThirdPersonCam.Follow = GameObject.FindWithTag("Player").transform;
+
+        //Set the cinemachine camera to look at the Player models hip bone
         ThirdPersonCam.LookAt = GameObject.Find("Hip").transform;
             
        
